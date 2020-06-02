@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-    resp, err := http.Get("https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=<api_key>")
+    resp, err := http.Get("https://api.openweathermap.org/data/2.5/weather?q=<city_name>&appid=<api_key>")
     if err != nil {
         fmt.Println(err)
         os.Exit(1)
