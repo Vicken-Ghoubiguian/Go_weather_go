@@ -4,11 +4,18 @@ import (
     "fmt"
     "io/ioutil"
     "os"
+    "flag"
 )
 
 func main() {
 
-	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", "<city_name>", "<api_key>")
+	cityName := flag.String("city", "", "The city whose you want weather")
+
+	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
+
+	flag.Parse()
+
+	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", *cityName, *apiKey)
 
 	resp, err := http.Get(weather_request)
 
