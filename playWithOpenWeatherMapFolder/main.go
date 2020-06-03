@@ -7,17 +7,28 @@ import (
 )
 
 func main() {
-    resp, err := http.Get("https://api.openweathermap.org/data/2.5/weather?q=<city_name>&appid=<api_key>")
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(1)
-    }
 
-    text, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(1)
-    }
+	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", "<city_name>", "<api_key>")
 
-    fmt.Println(string(text))
+	resp, err := http.Get(weather_request)
+
+	if err != nil {
+
+		fmt.Println(err)
+
+		os.Exit(1)
+
+	}
+
+	text, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+
+		fmt.Println(err)
+
+		os.Exit(1)
+
+	}
+
+	fmt.Println(string(text))
 }
