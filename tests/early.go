@@ -3,6 +3,7 @@ package main
 import (
     "net/http"
     "fmt"
+    "encoding/json"
     "io/ioutil"
     "os"
     "flag"
@@ -28,7 +29,7 @@ func main() {
 
 	}
 
-	text, err := ioutil.ReadAll(resp.Body)
+	weather_json_string, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
 
@@ -38,5 +39,17 @@ func main() {
 
 	}
 
-	fmt.Println(string(text))
+	fmt.Println(string(weather_json_string))
+
+	var weather_map map[string]interface{}
+
+	json.Unmarshal([]byte(weather_json_string), &weather_map)
+
+	fmt.Println("\n")
+
+	fmt.Println("---------------------")
+
+	fmt.Println("\n")
+
+	fmt.Println("MAIN: ", weather_map["main"])
 }
