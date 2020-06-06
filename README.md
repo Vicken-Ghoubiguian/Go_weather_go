@@ -1,6 +1,8 @@
 # Go_weather_go
 
-A golang client to use the OpenWeatherMap API
+This is a golang project to develop an API to get weather datas using the OpenWeatherMap utility.
+
+
 
 ## How run the test programs ?
 
