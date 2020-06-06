@@ -31,6 +31,16 @@ Here is the datas:
 
 * sunset time,
 
+* atmospheric pressure,
+
+* atmospheric pressure at sea level,
+
+* UV (index and risk),
+
+* humidity,
+
+* wind (speed and direction),
+
 <a name="how_run_the_test_programs"></a>
 ## How run the test programs ?
 
