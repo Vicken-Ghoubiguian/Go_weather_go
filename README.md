@@ -1,8 +1,28 @@
 # Go_weather_go
 
+## Presentation
+
 This is a golang project to develop an API to get weather datas using the OpenWeatherMap utility.
 
+Here is the datas:
 
+* coordinates (longitude and latitude),
+
+* main weather,
+
+* weather description,
+
+* current temperature,
+
+* feeling temperature,
+
+* maximum expected temperature,
+
+* minimum expected temperature,
+
+* sunrise time,
+
+* sunset time,
 
 ## How run the test programs ?
 
