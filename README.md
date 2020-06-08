@@ -44,7 +44,7 @@ Here is the datas returned:
 <a name="how_run_the_utility"></a>
 ## How run the utility ?
 
-To run this program you want, you can execute this commands:
+To run this program, you can execute this commands:
 
 ```bash
 go build go_weather_go.go
