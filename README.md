@@ -4,7 +4,7 @@
 
 1. [Presentation](#presentation)
 
-2. [How run the test programs](#how_run_the_test_programs)
+2. [How run the utility](#how_run_the_utility)
 
 <a name="presentation"></a>
 ## Presentation
@@ -41,8 +41,8 @@ Here is the datas returned:
 
 * wind (speed and direction),
 
-<a name="how_run_the_test_programs"></a>
-## How run these utility ?
+<a name="how_run_the_utility"></a>
+## How run the utility ?
 
 To run this program you want, you can execute this commands:
 
