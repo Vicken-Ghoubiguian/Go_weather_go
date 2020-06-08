@@ -9,9 +9,9 @@
 <a name="presentation"></a>
 ## Presentation
 
-This is a golang project to develop an API to get weather datas using the OpenWeatherMap utility.
+This is a project to develop a golang utility to get weather datas using the OpenWeatherMap API.
 
-Here is the datas:
+Here is the datas returned:
 
 * coordinates (longitude and latitude),
 
@@ -42,24 +42,17 @@ Here is the datas:
 * wind (speed and direction),
 
 <a name="how_run_the_test_programs"></a>
-## How run the test programs ?
+## How run these utility ?
 
-All test programs are in the `tests` folder.
-
-So first of all, you must position yourself in the `tests` folder of the project by executing this command where you cloned this repo:
+To run this program you want, you can execute this commands:
 
 ```bash
-cd go_weather_go/tests
-```
-Now to run the test program you want, you can execute this commands:
+go build go_weather_go.go
 
-```bash
-go build <wished_test_program_name>.go
-
-./<wished_test_program_name> -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
+./go_weather_go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
 ```
 or this single one:
 
 ```bash
-go run <wished_test_program_name>.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
+go run go_weather_go.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
 ```
