@@ -35,7 +35,7 @@ Here is the datas returned:
 
 * atmospheric pressure at sea level,
 
-* UV (index and risk),
+* UV index,
 
 * humidity,
 
