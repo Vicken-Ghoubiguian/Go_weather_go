@@ -10,6 +10,13 @@ import (
     "flag"
 )
 
+func owmErrorHandler(code_error string, error_message string) {
+
+	fmt.Println("\n")
+
+	fmt.Println("Occured error (" + code_error + "): " + error_message)
+}
+
 func errorHandlerFunction(err error) {
 	
 	if err != nil {
@@ -17,7 +24,6 @@ func errorHandlerFunction(err error) {
 		fmt.Println(err)
 
 		os.Exit(1)
-
 	}
 }
 
@@ -50,12 +56,8 @@ func main() {
 	error_nbr,_ := strconv.Atoi(cod_as_string)
 
 	if error_nbr != 200 {
-	
-		error_message := fmt.Sprintf("%v", weather_map["message"])
-
-		fmt.Println("\n")
-
-		fmt.Println("Occured error (" + cod_as_string + "): " + error_message)
+		
+		owmErrorHandler(cod_as_string, fmt.Sprintf("%v", weather_map["message"]))
 
 	} else {
 
