@@ -10,6 +10,17 @@ import (
     "flag"
 )
 
+func errorHandlerFunction(err error) {
+	
+	if err != nil {
+
+		fmt.Println(err)
+
+		os.Exit(1)
+
+	}
+}
+
 func main() {
 
 	cityName := flag.String("city", "", "The city whose you want weather")
@@ -22,23 +33,11 @@ func main() {
 
 	resp, err := http.Get(weather_request)
 
-	if err != nil {
-
-		fmt.Println(err)
-
-		os.Exit(1)
-
-	}
+	errorHandlerFunction(err)
 
 	weather_json_string, err := ioutil.ReadAll(resp.Body)
 
-	if err != nil {
-
-		fmt.Println(err)
-
-		os.Exit(1)
-
-	}
+	errorHandlerFunction(err)
 
 	fmt.Println(string(weather_json_string))
 
