@@ -12,11 +12,19 @@ import (
 
 var red string = "\033[31m"
 var green string = "\033[32m"
+var cyan string = "\033[36m"
 var reset string = "\033[0m"
 
-func owmErrorHandler(code_error string, error_message string) {
+func presentationFunction() {
 
+	fmt.Println(cyan + "Welcome to Go weather go !!!!" + reset)
+	
+	fmt.Println(cyan + "This is a simple client to display current weather at your favorite town from OpenWeatherMap API" + reset)
+	
 	fmt.Println("\n")
+}
+
+func owmErrorHandler(code_error string, error_message string) {
 
 	fmt.Println(red + "Occured error (" + code_error + "): " + error_message + reset)
 	
@@ -34,6 +42,8 @@ func errorHandlerFunction(err error) {
 }
 
 func main() {
+
+	presentationFunction()
 
 	cityName := flag.String("city", "", "The city whose you want weather")
 
