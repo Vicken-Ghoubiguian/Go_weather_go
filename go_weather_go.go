@@ -2,6 +2,7 @@ package main
 
 import (
     "net/http"
+    "strconv"
     "fmt"
     "encoding/json"
     "io/ioutil"
@@ -44,12 +45,27 @@ func main() {
 	var weather_map map[string]interface{}
 
 	json.Unmarshal([]byte(weather_json_string), &weather_map)
+	
+	cod_as_string := fmt.Sprintf("%v", weather_map["cod"])
 
-	fmt.Println("\n")
+	error_nbr,_ := strconv.Atoi(cod_as_string)
 
-	fmt.Println("---------------------")
+	if error_nbr != 200 {
+	
+		error_message := fmt.Sprintf("%v", weather_map["message"])
 
-	fmt.Println("\n")
+		fmt.Println("\n")
 
-	fmt.Println("MAIN: ", weather_map["main"])
+		fmt.Println("Occured error (" + cod_as_string + "): " + error_message)
+
+	} else {
+
+		fmt.Println("\n")
+
+		fmt.Println("---------------------")
+
+		fmt.Println("\n")
+
+		fmt.Println("MAIN: ", weather_map["main"])
+	}
 }
