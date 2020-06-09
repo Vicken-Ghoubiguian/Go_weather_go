@@ -19,6 +19,8 @@ func owmErrorHandler(code_error string, error_message string) {
 	fmt.Println("\n")
 
 	fmt.Println(red + "Occured error (" + code_error + "): " + error_message + reset)
+	
+	fmt.Println("\n")
 }
 
 func errorHandlerFunction(err error) {
@@ -49,7 +51,8 @@ func main() {
 
 	errorHandlerFunction(err)
 
-	fmt.Println(string(weather_json_string))
+	//Single instruction for testing and development
+	//fmt.Println(string(weather_json_string))
 
 	var weather_map map[string]interface{}
 
