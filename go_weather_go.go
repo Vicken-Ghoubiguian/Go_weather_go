@@ -10,18 +10,22 @@ import (
     "flag"
 )
 
+var red string = ""
+var green string = ""
+var reset string = ""
+
 func owmErrorHandler(code_error string, error_message string) {
 
 	fmt.Println("\n")
 
-	fmt.Println("Occured error (" + code_error + "): " + error_message)
+	fmt.Println(red + "Occured error (" + code_error + "): " + error_message + reset)
 }
 
 func errorHandlerFunction(err error) {
 	
 	if err != nil {
 
-		fmt.Println(err)
+		fmt.Println(red + err + reset)
 
 		os.Exit(1)
 	}
