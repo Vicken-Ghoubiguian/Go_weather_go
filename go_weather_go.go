@@ -58,15 +58,19 @@ func main() {
 	//
 	flag.Parse()
 
-	//
+	//Definition of the http request string and affectation of it in the weather_request variable
 	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", *cityName, *apiKey)
 
+	//
 	resp, err := http.Get(weather_request)
 
+	//errorHandlerFunction is called to treat any occured error from the above instruction
 	errorHandlerFunction(err)
 
+	//
 	weather_json_string, err := ioutil.ReadAll(resp.Body)
 
+	//errorHandlerFunction is called to treat any occured error from the above instruction
 	errorHandlerFunction(err)
 
 	//Single instruction for testing and development
@@ -78,10 +82,10 @@ func main() {
 
 	cod_as_string := fmt.Sprintf("%v", weather_map["cod"])
 
-	error_nbr,_ := strconv.Atoi(cod_as_string)
+	code_as_int,_ := strconv.Atoi(cod_as_string)
 
 	//If the returned code is different from 200 (the http request is successful)
-	if error_nbr != 200 {
+	if code_as_int != 200 {
 
 		//owmErrorHandler is called to display the occured http request error's code and message
 		owmErrorHandler(cod_as_string, fmt.Sprintf("%v", weather_map["message"]))
