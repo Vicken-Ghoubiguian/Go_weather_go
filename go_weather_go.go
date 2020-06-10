@@ -1,5 +1,6 @@
 package main
 
+//Import all necessary packages
 import (
     "net/http"
     "strconv"
@@ -10,29 +11,33 @@ import (
     "flag"
 )
 
+//Definition of global variables which represents colors
 var red string = "\033[31m"
 var green string = "\033[32m"
 var cyan string = "\033[36m"
 var reset string = "\033[0m"
 
+//Function which display the utility's presentation
 func presentationFunction() {
 
 	fmt.Println(cyan + "Welcome to Go weather go !!!!" + reset)
-	
+
 	fmt.Println(cyan + "This is a simple client to display current weather at your favorite town from OpenWeatherMap API" + reset)
-	
+
 	fmt.Println("\n")
 }
 
+//Function which display http request error's code and message when the first occurs
 func owmErrorHandler(code_error string, error_message string) {
 
 	fmt.Println(red + "Occured error (" + code_error + "): " + error_message + reset)
-	
+
 	fmt.Println("\n")
 }
 
+//Function which display other general errors when they occurs
 func errorHandlerFunction(err error) {
-	
+
 	if err != nil {
 
 		fmt.Println(red + err.Error() + reset)
@@ -67,13 +72,14 @@ func main() {
 	var weather_map map[string]interface{}
 
 	json.Unmarshal([]byte(weather_json_string), &weather_map)
-	
+
 	cod_as_string := fmt.Sprintf("%v", weather_map["cod"])
 
 	error_nbr,_ := strconv.Atoi(cod_as_string)
 
+	//If the returned code is 
 	if error_nbr != 200 {
-		
+
 		owmErrorHandler(cod_as_string, fmt.Sprintf("%v", weather_map["message"]))
 
 	} else {
