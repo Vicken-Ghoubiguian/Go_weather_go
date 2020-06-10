@@ -48,14 +48,17 @@ func errorHandlerFunction(err error) {
 
 func main() {
 
+	//presentationFunction is called to display the utility's presentation
 	presentationFunction()
 
+	//The parameters flags are defined below
 	cityName := flag.String("city", "", "The city whose you want weather")
-
 	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
 
+	//
 	flag.Parse()
 
+	//
 	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", *cityName, *apiKey)
 
 	resp, err := http.Get(weather_request)
@@ -77,9 +80,10 @@ func main() {
 
 	error_nbr,_ := strconv.Atoi(cod_as_string)
 
-	//If the returned code is 
+	//If the returned code is different from 200 (the http request is successful)
 	if error_nbr != 200 {
 
+		//owmErrorHandler is called to display the occured http request error's code and message
 		owmErrorHandler(cod_as_string, fmt.Sprintf("%v", weather_map["message"]))
 
 	} else {
