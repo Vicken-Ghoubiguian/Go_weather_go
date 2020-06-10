@@ -46,6 +46,7 @@ func errorHandlerFunction(err error) {
 	}
 }
 
+//The main function is the entry point of the go_weather_go utility
 func main() {
 
 	//presentationFunction is called to display the utility's presentation
@@ -55,13 +56,13 @@ func main() {
 	cityName := flag.String("city", "", "The city whose you want weather")
 	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
 
-	//
+	//Parsing all received values for each flag
 	flag.Parse()
 
-	//Definition of the http request string and affectation of it in the weather_request variable
+	//Definition of the URL for the http request string and affectation of it in the weather_request variable
 	weather_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", *cityName, *apiKey)
 
-	//
+	//Make the http get request and affectation of it's response in the the resp variable as JSON string
 	resp, err := http.Get(weather_request)
 
 	//errorHandlerFunction is called to treat any occured error from the above instruction
