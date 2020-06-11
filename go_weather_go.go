@@ -46,6 +46,35 @@ func errorHandlerFunction(err error) {
 	}
 }
 
+//Function which converts the kelvin temperature in the specified temperature scale
+func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale *string) float64 {
+
+	var convertedTemperatureValue float64 = 0.0
+	var tempScaleAsString string = *temperatureScale
+
+	if tempScaleAsString == "celsius" {
+
+		convertedTemperatureValue = temperatureInKelvin - 273.15
+
+	} else if tempScaleAsString == "fahrenheit" {
+
+		convertedTemperatureValue = temperatureInKelvin * (9/5) - 459.67
+
+	} else if tempScaleAsString == "kelvin" {
+
+		convertedTemperatureValue = temperatureInKelvin
+
+	} else {
+
+		fmt.Println(red + "Error: " + tempScaleAsString + " is not a temperature scale" + reset)
+
+		os.Exit(1)
+
+	}
+
+	return convertedTemperatureValue
+}
+
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
@@ -56,6 +85,8 @@ func main() {
 	cityName := flag.String("city", "", "The city whose you want weather")
 	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
 	tempScale := flag.String("tempScale", "", "The temperature scale")
+	
+	_ = temperatureConversionFunction(0.0, tempScale)
 
 	//Parsing all received values for each flag
 	flag.Parse()
