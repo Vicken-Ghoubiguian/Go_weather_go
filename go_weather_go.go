@@ -119,6 +119,7 @@ func main() {
 	//Single instruction for testing and development
 	//fmt.Println(string(weather_json_string))
 
+	//Declaration of struct instances
 	message1 := message{}
 	cod1 := cod{}
 
@@ -133,6 +134,7 @@ func main() {
 	//If the returned code is different from 200 (the http request is successful)
 	if cod1.COD != 200 {
 
+		//owmErrorHandler is called to display the occured http request error's code and message
 		owmErrorHandler(strconv.Itoa(cod1.COD), message1.MESSAGE)
 
 	} else {
