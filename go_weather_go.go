@@ -84,8 +84,8 @@ func main() {
 	//The parameters flags are defined below
 	cityName := flag.String("city", "", "The city whose you want weather")
 	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
-	tempScale := flag.String("tempScale", "", "The temperature scale")
-	
+	tempScale := flag.String("tempScale", "kelvin", "The temperature scale")
+
 	_ = temperatureConversionFunction(0.0, tempScale)
 
 	//Parsing all received values for each flag
