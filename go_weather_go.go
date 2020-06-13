@@ -75,6 +75,16 @@ func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale
 	return convertedTemperatureValue
 }
 
+type cod struct {
+
+	COD int `json:"cod"`
+}
+
+type message struct {
+
+	MESSAGE string `json:"message"`
+}
+
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
@@ -109,19 +119,21 @@ func main() {
 	//Single instruction for testing and development
 	//fmt.Println(string(weather_json_string))
 
+	message1 := message{}
+	cod1 := cod{}
+
 	var weather_map map[string]interface{}
 
 	json.Unmarshal([]byte(weather_json_string), &weather_map)
 
-	cod_as_string := fmt.Sprintf("%v", weather_map["cod"])
+	json.Unmarshal([]byte(weather_json_string), &cod1)
 
-	code_as_int,_ := strconv.Atoi(cod_as_string)
+	json.Unmarshal([]byte(weather_json_string), &message1)
 
 	//If the returned code is different from 200 (the http request is successful)
-	if code_as_int != 200 {
+	if cod1.COD != 200 {
 
-		//owmErrorHandler is called to display the occured http request error's code and message
-		owmErrorHandler(cod_as_string, fmt.Sprintf("%v", weather_map["message"]))
+		owmErrorHandler(strconv.Itoa(cod1.COD), message1.MESSAGE)
 
 	} else {
 
