@@ -4,7 +4,9 @@
 
 1. [Presentation](#presentation)
 
-2. [How run the utility](#how_run_the_utility)
+2. [Prerequisites](#prerequisites)
+
+3. [How run the utility](#how_run_the_utility)
 
 <a name="presentation"></a>
 ## Presentation
@@ -40,6 +42,18 @@ Here is the datas returned:
 * humidity,
 
 * wind (speed and direction),
+
+<a name="prerequisites"></a>
+## Prerequisites
+
+Finally, you must install the `gjson` github project.
+
+To do this, execute the following command:
+
+```bash
+go get -u github.com/tidwall/gjson
+```
+Well done. It's your turn to play now...
 
 <a name="how_run_the_utility"></a>
 ## How run the utility ?
