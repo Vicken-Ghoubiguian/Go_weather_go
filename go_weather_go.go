@@ -112,13 +112,13 @@ func main() {
 
 	//Single instruction for testing and development
 	//fmt.Println(weather_string)
-	
+
 	//Extraction of HTTP code
 	code := gjson.Get(weather_string, "cod")
 
 	//If the returned code is different from 200 (the http request is successful)
 	if code.Int() != 200 {
-	
+
 		//Extraction of textual message
 		message := gjson.Get(weather_string, "message")
 
@@ -127,14 +127,24 @@ func main() {
 
 	} else {
 
+		//Breaking the line
 		fmt.Println("\n")
 
-		fmt.Println("---------------------")
+		//Extraction of name and country code from the JSON string in the variable 'weather_string'
+		cityName := gjson.Get(weather_string, "name")
+		countryCode := gjson.Get(weather_string, "sys.country")
 
-		fmt.Println("\n")
-
+		//Extraction of longitude and latitude from the JSON string in the variable 'weather_string'
 		longeur := gjson.Get(weather_string, "coord.lon")
+		latitude := gjson.Get(weather_string, "coord.lat")
 
-		fmt.Println("(LON: ", longeur, ")")
+		//
+		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
+
+		//
+		fmt.Println(green + "Geographic coordinates: (longitude: ", longeur.String(), ", latitude: ", latitude.String(), ")" + reset)
+
+		//Breaking another line
+		fmt.Println("\n")
 	}
 }
