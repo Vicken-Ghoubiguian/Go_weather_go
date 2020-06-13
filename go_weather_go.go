@@ -3,9 +3,7 @@ package main
 //Import all necessary packages
 import (
     "net/http"
-    "strconv"
     "fmt"
-    "encoding/json"
     "io/ioutil"
     "os"
     "flag"
@@ -78,16 +76,6 @@ func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale
 	return convertedTemperatureValue
 }
 
-type cod struct {
-
-	COD int `json:"cod"`
-}
-
-type message struct {
-
-	MESSAGE string `json:"message"`
-}
-
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
@@ -119,24 +107,23 @@ func main() {
 	//errorHandlerFunction is called to treat any occured error from the above instruction
 	errorHandlerFunction(err)
 
+	//Single instruction to convert weather_json_string []byte variable to string
+	weather_string := string(weather_json_string)
+
 	//Single instruction for testing and development
-	fmt.Println(string(weather_json_string))
-
-	//Declaration of struct instances
-	message1 := message{}
-	cod1 := cod{}
-
-	var weather_map map[string]interface{}
-
-	json.Unmarshal([]byte(weather_json_string), &weather_map)
-	json.Unmarshal([]byte(weather_json_string), &cod1)
-	json.Unmarshal([]byte(weather_json_string), &message1)
+	//fmt.Println(weather_string)
+	
+	//Extraction of HTTP code
+	code := gjson.Get(weather_string, "cod")
 
 	//If the returned code is different from 200 (the http request is successful)
-	if cod1.COD != 200 {
+	if code.Int() != 200 {
+	
+		//Extraction of textual message
+		message := gjson.Get(weather_string, "message")
 
 		//owmErrorHandler is called to display the occured http request error's code and message
-		owmErrorHandler(strconv.Itoa(cod1.COD), message1.MESSAGE)
+		owmErrorHandler(code.String(), message.String())
 
 	} else {
 
@@ -146,9 +133,7 @@ func main() {
 
 		fmt.Println("\n")
 
-		fmt.Println("MAIN: ", weather_map["main"])
-
-		longeur := gjson.Get(string(weather_json_string), "coord.lon")
+		longeur := gjson.Get(weather_string, "coord.lon")
 
 		fmt.Println("(LON: ", longeur, ")")
 	}
