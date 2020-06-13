@@ -11,6 +11,9 @@ import (
     "flag"
 )
 
+//Importation of the github project gjson to treat received json
+import "github.com/tidwall/gjson"
+
 //Definition of global variables which represents colors
 var red string = "\033[31m"
 var green string = "\033[32m"
@@ -117,7 +120,7 @@ func main() {
 	errorHandlerFunction(err)
 
 	//Single instruction for testing and development
-	//fmt.Println(string(weather_json_string))
+	fmt.Println(string(weather_json_string))
 
 	//Declaration of struct instances
 	message1 := message{}
@@ -126,9 +129,7 @@ func main() {
 	var weather_map map[string]interface{}
 
 	json.Unmarshal([]byte(weather_json_string), &weather_map)
-
 	json.Unmarshal([]byte(weather_json_string), &cod1)
-
 	json.Unmarshal([]byte(weather_json_string), &message1)
 
 	//If the returned code is different from 200 (the http request is successful)
@@ -146,5 +147,9 @@ func main() {
 		fmt.Println("\n")
 
 		fmt.Println("MAIN: ", weather_map["main"])
+
+		longeur := gjson.Get(string(weather_json_string), "coord.lon")
+
+		fmt.Println("(LON: ", longeur, ")")
 	}
 }
