@@ -154,13 +154,25 @@ func main() {
 		main_weather := gjson.Get(weather, "main")
 		description_weather := gjson.Get(weather, "description")
 
-		//Disoplaying wished city and the corresponding country code
+		//Extraction of all datas relative to temperature from the JSON string in the variable 'weather_string'
+		temperature := gjson.Get(weather_string, "main.temp")
+		feeling_temperature := gjson.Get(weather_string, "main.feels_like")
+		minimum_temperature := gjson.Get(weather_string, "main.temp_min")
+		maximum_temperature := gjson.Get(weather_string, "main.temp_max")
+
+		//Displaying wished city and the corresponding country code
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
 		//Displaying of all weather elements
 		fmt.Println(green + "Geographic coordinates: (longitude: ", longeur.String(), ", latitude: ", latitude.String(), ")" + reset)
 		fmt.Println(green + "Main weather: ", main_weather, "" + reset)
 		fmt.Println(green + "Description weather: ", description_weather, "" + reset)
+
+		//Displaying of all datas about temperature
+		fmt.Println(green + "Temperature: ", temperature.String(), " K" + reset)
+		fmt.Println(green + "Feeling temperature: ", feeling_temperature.String(), " K" + reset)
+                fmt.Println(green + "Minimum temperature: ", minimum_temperature.String(), " K" + reset)
+                fmt.Println(green + "Maximum temperature: ", maximum_temperature.String(), " K" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
