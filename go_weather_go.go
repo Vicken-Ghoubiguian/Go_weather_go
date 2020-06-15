@@ -77,6 +77,14 @@ func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale
 	return convertedTemperatureValue
 }
 
+//Function which extracts weather datas from JSON response
+func extractWeatherFromJSONFunction(weather_from_http_response string) string {
+
+	brut_weather_without_hooks := strings.Trim(weather_from_http_response, "[]")
+
+	return brut_weather_without_hooks
+}
+
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
@@ -139,18 +147,20 @@ func main() {
 		longeur := gjson.Get(weather_string, "coord.lon")
 		latitude := gjson.Get(weather_string, "coord.lat")
 
-		//
-		brut_weather := gjson.Get(weather_string, "weather")
+		//Extraction of weather datas from JSON obtained from HTTP response
+		weather := extractWeatherFromJSONFunction(gjson.Get(weather_string, "weather").String())
 
-		//
-		brut_weather_without_hooks := strings.Trim(brut_weather.String(), "[]")
+		//Extraction of all weather datas from JSON string in the variable 'weather'
+		main_weather := gjson.Get(weather, "main")
+		description_weather := gjson.Get(weather, "description")
 
-		//
+		//Disoplaying wished city and the corresponding country code
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
-		//
+		//Displaying of all weather elements
 		fmt.Println(green + "Geographic coordinates: (longitude: ", longeur.String(), ", latitude: ", latitude.String(), ")" + reset)
-		fmt.Println(green + "Weather: ", brut_weather_without_hooks, " " + reset)
+		fmt.Println(green + "Main weather: ", main_weather, "" + reset)
+		fmt.Println(green + "Description weather: ", description_weather, "" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
