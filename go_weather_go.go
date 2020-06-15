@@ -7,6 +7,7 @@ import (
     "io/ioutil"
     "os"
     "flag"
+    "strings"
 )
 
 //Importation of the github project gjson to treat received json
@@ -111,7 +112,7 @@ func main() {
 	weather_string := string(weather_json_string)
 
 	//Single instruction for testing and development
-	//fmt.Println(weather_string)
+	fmt.Println(weather_string)
 
 	//Extraction of HTTP code
 	code := gjson.Get(weather_string, "cod")
@@ -139,10 +140,17 @@ func main() {
 		latitude := gjson.Get(weather_string, "coord.lat")
 
 		//
+		brut_weather := gjson.Get(weather_string, "weather")
+
+		//
+		brut_weather_without_hooks := strings.Trim(brut_weather.String(), "[]")
+
+		//
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
 		//
 		fmt.Println(green + "Geographic coordinates: (longitude: ", longeur.String(), ", latitude: ", latitude.String(), ")" + reset)
+		fmt.Println(green + "Weather: ", brut_weather_without_hooks, " " + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
