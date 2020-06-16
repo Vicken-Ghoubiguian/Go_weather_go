@@ -60,7 +60,7 @@ func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale
 
 	} else if tempScaleAsString == "fahrenheit" {
 
-		convertedTemperatureValue = temperatureInKelvin * (9/5) - 459.67
+		convertedTemperatureValue = temperatureInKelvin * 1.8 - 459.67
 
 	} else if tempScaleAsString == "kelvin" {
 
