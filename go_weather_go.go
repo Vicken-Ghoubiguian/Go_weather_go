@@ -77,6 +77,35 @@ func temperatureConversionFunction(temperatureInKelvin float64, temperatureScale
 	return convertedTemperatureValue
 }
 
+//Function which defines the temperature scale symbol from the specified temperature scale
+func temperatureSymbolFunction(temperatureScale *string) string {
+
+	var returnedSymbol string = ""
+	var tempScaleAsString string = *temperatureScale
+
+	if tempScaleAsString == "celsius" {
+
+                returnedSymbol = " °C"
+
+        } else if tempScaleAsString == "fahrenheit" {
+
+                returnedSymbol = " °F"
+
+        } else if tempScaleAsString == "kelvin" {
+
+                returnedSymbol = " K"
+
+        } else {
+
+                fmt.Println(red + "Error: " + tempScaleAsString + " is not a temperature scale" + reset)
+
+                os.Exit(1)
+
+        }
+
+        return returnedSymbol
+}
+
 //Function which extracts weather datas from JSON response
 func extractWeatherFromJSONFunction(weather_from_http_response string) string {
 
@@ -95,8 +124,6 @@ func main() {
 	cityName := flag.String("city", "", "The city whose you want weather")
 	apiKey := flag.String("apiKey", "", "The OpenWeatherMap API key")
 	tempScale := flag.String("tempScale", "kelvin", "The temperature scale")
-
-	_ = temperatureConversionFunction(0.0, tempScale)
 
 	//Parsing all received values for each flag
 	flag.Parse()
@@ -168,11 +195,20 @@ func main() {
 		fmt.Println(green + "Main weather: ", main_weather, "" + reset)
 		fmt.Println(green + "Description weather: ", description_weather, "" + reset)
 
+		//Convert all datas about temperature in the wished scale
+		temperature_in_wished_scale := temperatureConversionFunction(temperature.Float(), tempScale)
+		feeling_temperature_in_wished_scale := temperatureConversionFunction(feeling_temperature.Float(), tempScale)
+		minimum_temperature_in_wished_scale := temperatureConversionFunction(minimum_temperature.Float(), tempScale)
+		maximum_temperature_in_wished_scale := temperatureConversionFunction(maximum_temperature.Float(), tempScale)
+
+		//Define the temperature scale symbol
+		temperatureScaleSymbol := temperatureSymbolFunction(tempScale)
+
 		//Displaying of all datas about temperature
-		fmt.Println(green + "Temperature: ", temperature.String(), " K" + reset)
-		fmt.Println(green + "Feeling temperature: ", feeling_temperature.String(), " K" + reset)
-                fmt.Println(green + "Minimum temperature: ", minimum_temperature.String(), " K" + reset)
-                fmt.Println(green + "Maximum temperature: ", maximum_temperature.String(), " K" + reset)
+		fmt.Println(green + "Temperature: ", fmt.Sprintf("%f", temperature_in_wished_scale), temperatureScaleSymbol + reset)
+		fmt.Println(green + "Feeling temperature: ", fmt.Sprintf("%f", feeling_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+                fmt.Println(green + "Minimum temperature: ", fmt.Sprintf("%f", minimum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+                fmt.Println(green + "Maximum temperature: ", fmt.Sprintf("%f", maximum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
