@@ -205,10 +205,10 @@ func main() {
 		temperatureScaleSymbol := temperatureSymbolFunction(tempScale)
 
 		//Displaying of all datas about temperature
-		fmt.Println(green + "Temperature: ", fmt.Sprintf("%f", temperature_in_wished_scale), temperatureScaleSymbol + reset)
-		fmt.Println(green + "Feeling temperature: ", fmt.Sprintf("%f", feeling_temperature_in_wished_scale), temperatureScaleSymbol + reset)
-                fmt.Println(green + "Minimum temperature: ", fmt.Sprintf("%f", minimum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
-                fmt.Println(green + "Maximum temperature: ", fmt.Sprintf("%f", maximum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+		fmt.Println(green + "Temperature: ", fmt.Sprintf("%.2f", temperature_in_wished_scale), temperatureScaleSymbol + reset)
+		fmt.Println(green + "Feeling temperature: ", fmt.Sprintf("%.2f", feeling_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+                fmt.Println(green + "Minimum temperature: ", fmt.Sprintf("%.2f", minimum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+                fmt.Println(green + "Maximum temperature: ", fmt.Sprintf("%.2f", maximum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
