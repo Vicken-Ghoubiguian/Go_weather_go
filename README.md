@@ -46,7 +46,16 @@ Here is the datas returned:
 <a name="prerequisites"></a>
 ## Prerequisites
 
-Finally, you must install the `gjson` github project.
+First, you must install Go language on your machine.
+
+To do this, you can consult the official documentation [here](https://golang.org/doc/install).
+
+Or you can install execute this command if you're on Debian or Ubuntu distribution:
+
+```bash
+sudo apt install golang-go
+```
+Finally, you must install the `gjson` github project to manipulate the JSON response from HTTP request.
 
 To do this, execute the following command:
 
