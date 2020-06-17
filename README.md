@@ -47,7 +47,7 @@ Here is the datas returned:
 
 * wind (speed and direction),
 
-<a name="#prerequisites_to_run_the_utility_on_machine_host"></a>
+<a name="prerequisites_to_run_the_utility_on_machine_host"></a>
 ## Prerequisites to run the utility on machine host
 
 First, you must install Go language on your machine.
@@ -68,7 +68,7 @@ go get -u github.com/tidwall/gjson
 ```
 Well done. It's your turn to play now...
 
-<a name="#prerequisites_to_run_the_utility_with_docker"></a>
+<a name="prerequisites_to_run_the_utility_with_docker"></a>
 ## Prerequisites to run the utility with Docker
 
 First, you must install Docker on your machine.
@@ -97,7 +97,7 @@ or this single one:
 ```bash
 go run go_weather_go.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
 ```
-<a name="#how_run_the_utility_with_docker"></a>
+<a name="how_run_the_utility_with_docker"></a>
 ## How run the utility with Docker
 
 To run this utility with Docker, you can build the Docker image from Dockerfile or you can pull the official Docker image on Docker Hub.
