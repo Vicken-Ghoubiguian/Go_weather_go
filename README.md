@@ -4,9 +4,13 @@
 
 1. [Presentation](#presentation)
 
-2. [Prerequisites](#prerequisites)
+2. [Prerequisites to run the utility on machine host](#prerequisites_to_run_the_utility_on_machine_host)
 
-3. [How run the utility](#how_run_the_utility)
+3. [Prerequisites to run the utility with Docker](#prerequisites_to_run_the_utility_with_docker)
+
+4. [How run the utility on machine host](#how_run_the_utility_on_machine_host)
+
+5. [How run the utility with Docker](#how_run_the_utility_with_docker)
 
 <a name="presentation"></a>
 ## Presentation
@@ -43,8 +47,8 @@ Here is the datas returned:
 
 * wind (speed and direction),
 
-<a name="prerequisites"></a>
-## Prerequisites
+<a name="#prerequisites_to_run_the_utility_on_machine_host"></a>
+## Prerequisites to run the utility on machine host
 
 First, you must install Go language on your machine.
 
@@ -64,8 +68,11 @@ go get -u github.com/tidwall/gjson
 ```
 Well done. It's your turn to play now...
 
-<a name="how_run_the_utility"></a>
-## How run the utility ?
+<a name="#prerequisites_to_run_the_utility_with_docker"></a>
+## Prerequisites to run the utility with Docker
+
+<a name="how_run_the_utility_on_machine_host"></a>
+## How run the utility on machine host ?
 
 To run this program, you can execute this commands:
 
@@ -79,3 +86,5 @@ or this single one:
 ```bash
 go run go_weather_go.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
 ```
+<a name="#how_run_the_utility_with_docker"></a>
+## How run the utility with Docker
