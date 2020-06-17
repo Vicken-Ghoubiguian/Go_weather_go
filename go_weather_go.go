@@ -114,6 +114,16 @@ func extractWeatherFromJSONFunction(weather_from_http_response string) string {
 	return brut_weather_without_hooks
 }
 
+//Function to convert timestamp to readable and formated time
+func treatingAndFormatingFunction(time_as_timestamp int64) string {
+
+	time_as_time := time.Unix(time_as_timestamp, 0)
+
+	time_as_string := time_as_time.Format(time.UnixDate)
+
+	return time_as_string
+}
+
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
