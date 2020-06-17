@@ -7,6 +7,7 @@ import (
     "io/ioutil"
     "os"
     "flag"
+    "time"
     "strings"
 )
 
@@ -219,6 +220,18 @@ func main() {
 		fmt.Println(green + "Feeling temperature: ", fmt.Sprintf("%.2f", feeling_temperature_in_wished_scale), temperatureScaleSymbol + reset)
                 fmt.Println(green + "Minimum temperature: ", fmt.Sprintf("%.2f", minimum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
                 fmt.Println(green + "Maximum temperature: ", fmt.Sprintf("%.2f", maximum_temperature_in_wished_scale), temperatureScaleSymbol + reset)
+
+		//Extraction of sunrise and sunset time as timestamp
+		sunrise := gjson.Get(weather_string, "sys.sunrise")
+		sunset := gjson.Get(weather_string, "sys.sunset")
+
+		//Conversion of collected datas to int
+		sunrise_as_timestamp := sunrise.Int()
+		sunset_as_timestamp := sunset.Int()
+
+		//Displaying sunrise and sunset time
+		fmt.Println(green + "Sunrise: ", treatingAndFormatingFunction(sunrise_as_timestamp), reset)
+		fmt.Println(green + "Sunset: ", treatingAndFormatingFunction(sunset_as_timestamp), reset)
 
 		//Breaking another line
 		fmt.Println("\n")
