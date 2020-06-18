@@ -39,8 +39,6 @@ Here is the datas returned:
 
 * atmospheric pressure,
 
-* atmospheric pressure at sea level,
-
 * UV index,
 
 * humidity,
