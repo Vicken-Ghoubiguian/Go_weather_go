@@ -92,12 +92,12 @@ To run this utility, you can execute this commands:
 ```bash
 go build go_weather_go.go
 
-./go_weather_go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
+./go_weather_go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key> -tempScale=<wished_temperature_scale>
 ```
 or this single one:
 
 ```bash
-go run go_weather_go.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key>
+go run go_weather_go.go -city=<wished_city_name> -apiKey=<OpenWeatherMap_API_key> -tempScale=<wished_temperature_scale>
 ```
 <a name="how_run_the_utility_with_docker"></a>
 ## How run the utility with Docker
