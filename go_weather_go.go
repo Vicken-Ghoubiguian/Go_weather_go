@@ -205,6 +205,9 @@ func main() {
 		//Extraction of humidity from the JSON variable weather_string to the humidity variable
 		humidity := gjson.Get(weather_string, "main.humidity")
 
+		//Extraction of atmospheric pressure from the JSON variable weather_string to the atmospheric_pressure variable
+		atmospheric_pressure := gjson.Get(weather_string, "main.pressure")
+
 		//Displaying wished city and the corresponding country code
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
@@ -246,6 +249,9 @@ func main() {
 
 		//Displaying humidity
 		fmt.Println(green + "Humidity: ", humidity.String(), " %" + reset)
+
+		//Displaying atmospheric pressure
+		fmt.Println(green + "Atmospheric pressure: ", atmospheric_pressure.String(), " hPa" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
