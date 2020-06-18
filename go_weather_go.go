@@ -157,7 +157,7 @@ func riskDeterminationFunction(uvValue int) string {
 		os.Exit(1)
 
 	}
-	
+
 	return uvRiskValue
 }
 
