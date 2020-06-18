@@ -45,7 +45,7 @@ Here is the datas returned:
 
 * humidity,
 
-* wind (speed and direction),
+* wind (speed and direction).
 
 <a name="prerequisites_to_run_the_utility_on_machine_host"></a>
 ## Prerequisites to run the utility on machine host
