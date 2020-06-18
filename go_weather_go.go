@@ -221,6 +221,27 @@ func main() {
 		longeur := gjson.Get(weather_string, "coord.lon")
 		latitude := gjson.Get(weather_string, "coord.lat")
 
+		//Definition of the URL for the http request string and affectation of it in the uvi_request variable
+		uvi_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/uvi?appid=%s&lat=%s&lon=%s", *apiKey, latitude.String(), longeur.String())
+
+		//Make the http get request and affectation of it's response in the the resp variable as JSON string
+		resp, err := http.Get(uvi_request)
+
+		//errorHandlerFunction is called to treat any occured error from the above instruction
+		errorHandlerFunction(err)
+
+		//
+		uvi_json_string, err := ioutil.ReadAll(resp.Body)
+
+		//errorHandlerFunction is called to treat any occured error from the above instruction
+		errorHandlerFunction(err)
+
+		//Single instruction to convert uvi_json_string []byte variable to string
+		uvi_string := string(uvi_json_string)
+
+		//Single instruction for testing and development
+		fmt.Println(uvi_string)
+
 		//Extraction of weather datas from JSON obtained from HTTP response
 		weather := extractWeatherFromJSONFunction(gjson.Get(weather_string, "weather").String())
 
