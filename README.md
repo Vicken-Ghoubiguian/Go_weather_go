@@ -45,6 +45,10 @@ Here is the datas returned:
 
 * wind (speed and direction).
 
+To use it, you must have an Openweathermap's API key.
+
+To get it, all are explained [here](https://openweathermap.org/appid).
+
 <a name="prerequisites_to_run_the_utility_on_machine_host"></a>
 ## Prerequisites to run the utility on machine host
 
