@@ -202,6 +202,9 @@ func main() {
 		wind_speed := gjson.Get(weather_string, "wind.speed")
 		wind_direction := gjson.Get(weather_string, "wind.deg")
 
+		//Extraction of humidity from the JSON variable weather_string to the humidity variable
+		humidity := gjson.Get(weather_string, "main.humidity")
+
 		//Displaying wished city and the corresponding country code
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
@@ -237,9 +240,12 @@ func main() {
 		fmt.Println(green + "Sunrise: ", treatingAndFormatingFunction(sunrise_as_timestamp), reset)
 		fmt.Println(green + "Sunset: ", treatingAndFormatingFunction(sunset_as_timestamp), reset)
 
-		//
+		//Displaying wind's speed and direction
 		fmt.Println(green + "Wind speed: ", wind_speed.String(), " m/s" + reset)
                 fmt.Println(green + "Wind direction: ", wind_direction.String(), " °" + reset)
+
+		//Displaying humidity
+		fmt.Println(green + "Humidity: ", humidity.String(), " %" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
