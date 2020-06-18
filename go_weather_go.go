@@ -125,6 +125,42 @@ func treatingAndFormatingFunction(time_as_timestamp int64) string {
 	return time_as_string
 }
 
+//Function to determine current UV risk level
+func riskDeterminationFunction(uvValue int) string {
+
+	var uvRiskValue string = ""
+
+	if uvValue <= 2 && 0 <= uvValue {
+
+		uvRiskValue = "Low"
+
+	} else if uvValue <= 5 && 3 <= uvValue {
+
+		uvRiskValue = "Moderate"
+
+	} else if uvValue <= 7 && 6 <= uvValue {
+
+		uvRiskValue = "High"
+
+	} else if uvValue <= 10 && 8 <= uvValue {
+
+		uvRiskValue = "Very high"
+
+	} else if 11 <= uvValue {
+
+		uvRiskValue = "Extreme"
+
+	} else {
+
+		fmt.Println(red + "Error: " + "not available value for UV index" + reset)
+
+		os.Exit(1)
+
+	}
+	
+	return uvRiskValue
+}
+
 //The main function is the entry point of the go_weather_go utility
 func main() {
 
