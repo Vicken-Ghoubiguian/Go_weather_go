@@ -218,11 +218,11 @@ func main() {
 		countryCode := gjson.Get(weather_string, "sys.country")
 
 		//Extraction of longitude and latitude from the JSON string in the variable 'weather_string'
-		longeur := gjson.Get(weather_string, "coord.lon")
+		longitude := gjson.Get(weather_string, "coord.lon")
 		latitude := gjson.Get(weather_string, "coord.lat")
 
 		//Definition of the URL for the http request string and affectation of it in the uvi_request variable
-		uvi_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/uvi?appid=%s&lat=%s&lon=%s", *apiKey, latitude.String(), longeur.String())
+		uvi_request := fmt.Sprintf("https://api.openweathermap.org/data/2.5/uvi?appid=%s&lat=%s&lon=%s", *apiKey, latitude.String(), longitude.String())
 
 		//Make the http get request and affectation of it's response in the the resp variable as JSON string
 		resp, err := http.Get(uvi_request)
@@ -269,7 +269,7 @@ func main() {
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
 		//Displaying of all weather elements
-		fmt.Println(green + "Geographic coordinates: (longitude: ", longeur.String(), ", latitude: ", latitude.String(), ")" + reset)
+		fmt.Println(green + "Geographic coordinates: (longitude: ", longitude.String(), ", latitude: ", latitude.String(), ")" + reset)
 		fmt.Println(green + "Main weather: ", main_weather, "" + reset)
 		fmt.Println(green + "Description weather: ", description_weather, "" + reset)
 
