@@ -39,7 +39,7 @@ Here is the datas returned:
 
 * atmospheric pressure,
 
-* UV index,
+* UV index (value and risk),
 
 * humidity,
 
