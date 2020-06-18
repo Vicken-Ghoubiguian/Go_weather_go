@@ -126,7 +126,7 @@ func treatingAndFormatingFunction(time_as_timestamp int64) string {
 }
 
 //Function to determine current UV risk level
-func riskDeterminationFunction(uvValue int) string {
+func riskDeterminationFunction(uvValue int64) string {
 
 	var uvRiskValue string = ""
 
@@ -194,7 +194,7 @@ func main() {
 	weather_string := string(weather_json_string)
 
 	//Single instruction for testing and development
-	fmt.Println(weather_string)
+	//fmt.Println(weather_string)
 
 	//Extraction of HTTP code
 	code := gjson.Get(weather_string, "cod")
@@ -240,7 +240,19 @@ func main() {
 		uvi_string := string(uvi_json_string)
 
 		//Single instruction for testing and development
-		fmt.Println(uvi_string)
+		//fmt.Println(uvi_string)
+
+		//Extraction of the uv index value from the JSON string variable uvi_string
+		uvi_brut_value := gjson.Get(uvi_string, "value")
+
+		//Extraction of the uv index's measure date from the JSON string variable uvi_string
+		uvi_measure_date := gjson.Get(uvi_string, "date")
+
+		//Conversion of the uv index's measure date to int
+		uvi_measure_date_as_timestamp := uvi_measure_date.Int()
+
+		//Rounding UV index value and store it to the uvi_value variable
+		uvi_value := uvi_brut_value.Int()
 
 		//Extraction of weather datas from JSON obtained from HTTP response
 		weather := extractWeatherFromJSONFunction(gjson.Get(weather_string, "weather").String())
@@ -309,6 +321,9 @@ func main() {
 
 		//Displaying atmospheric pressure
 		fmt.Println(green + "Atmospheric pressure: ", atmospheric_pressure.String(), " hPa" + reset)
+
+		//Displaying all necessary datas about UV index
+		fmt.Println(green + "UV index (at ", treatingAndFormatingFunction(uvi_measure_date_as_timestamp), "): ", fmt.Sprintf("%d", uvi_value), "(risk: " + riskDeterminationFunction(uvi_value) + ")" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
