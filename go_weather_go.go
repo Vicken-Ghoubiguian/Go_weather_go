@@ -198,6 +198,10 @@ func main() {
 		minimum_temperature := gjson.Get(weather_string, "main.temp_min")
 		maximum_temperature := gjson.Get(weather_string, "main.temp_max")
 
+		//Extraction of all datas relative to wind from the JSON variable weather_string
+		wind_speed := gjson.Get(weather_string, "wind.speed")
+		wind_direction := gjson.Get(weather_string, "wind.deg")
+
 		//Displaying wished city and the corresponding country code
 		fmt.Println(green + cityName.String() + " (" + countryCode.String() + ")" + reset)
 
@@ -232,6 +236,10 @@ func main() {
 		//Displaying sunrise and sunset time
 		fmt.Println(green + "Sunrise: ", treatingAndFormatingFunction(sunrise_as_timestamp), reset)
 		fmt.Println(green + "Sunset: ", treatingAndFormatingFunction(sunset_as_timestamp), reset)
+
+		//
+		fmt.Println(green + "Wind speed: ", wind_speed.String(), " m/s" + reset)
+                fmt.Println(green + "Wind direction: ", wind_direction.String(), " °" + reset)
 
 		//Breaking another line
 		fmt.Println("\n")
