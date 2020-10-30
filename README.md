@@ -19,6 +19,8 @@ This is a project to develop a golang utility to get weather datas using the Ope
 
 Here is the datas returned:
 
+* name of the whished city and its country code,
+
 * coordinates (longitude and latitude),
 
 * main weather,
