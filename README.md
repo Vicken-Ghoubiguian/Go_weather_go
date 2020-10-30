@@ -52,7 +52,7 @@ To get it, all are explained [here](https://openweathermap.org/appid).
 <a name="prerequisites_to_run_the_utility_on_machine_host"></a>
 ## Prerequisites to run the utility on machine host
 
-First, you must install Go language on your machine.
+You must install Go language on your machine.
 
 To do this, you can consult the official documentation [here](https://golang.org/doc/install).
 
@@ -60,13 +60,6 @@ Or you can install it by executing this command if you're on Debian or Ubuntu di
 
 ```bash
 sudo apt install golang-go
-```
-Finally, you must install the `gjson` github project to manipulate the JSON response from HTTP request.
-
-To do this, execute the following command:
-
-```bash
-go get -u github.com/tidwall/gjson
 ```
 Well done. It's your turn to play now...
 
